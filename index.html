@@ -37,6 +37,12 @@
           <option value="suncare">Suncare</option>
           <option value="fragrance">Fragrance</option>
         </select>
+        <input
+          type="text"
+          id="productSearch"
+          placeholder="Search products by name or keyword"
+          class="search-input"
+        />
       </div>
 
       <!-- Products Grid -->
@@ -46,7 +52,7 @@
       <div class="selected-products">
         <h2>Selected Products</h2>
         <div id="selectedProductsList"></div>
-        <button id="generateRoutine" class="generate-btn">
+        <button id="generateRoutineButton" class="generate-btn">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
         </button>
       </div>
@@ -72,6 +78,15 @@
           </button>
         </form>
       </section>
+
+      <!-- RTL and LTR Toggle Switch -->
+      <div class="rtl-toggle">
+        <label for="rtlToggle">
+          <input type="checkbox" id="rtlToggle" />
+          Enable RTL Mode
+        </label>
+        <button id="ltrButton">Switch to LTR</button>
+      </div>
 
       <!------- Footer Links ------->
       <footer class="site-footer">

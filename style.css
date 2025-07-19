@@ -11,6 +11,7 @@ body {
   color: #333;
   display: flex;
   justify-content: center;
+  background-color: #fff5f7; /* Subtle background to complement brand colors */
 }
 
 .page-wrapper {
@@ -23,6 +24,7 @@ body {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 10px;
+  color: #ff003b; /* Brand primary color */
 }
 
 .logo {
@@ -34,6 +36,7 @@ body {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 10px;
+  color: #e3a535; /* Brand secondary color */
 }
 
 /* category filter */
@@ -51,9 +54,27 @@ body {
   cursor: pointer;
   background-color: white;
   font-weight: 500;
+  border-color: #ff003b; /* Brand primary color */
 }
 
 .search-section select:focus {
+  outline: none;
+  border-color: #e3a535; /* Brand secondary color */
+}
+
+/* Search input field */
+.search-input {
+  margin-left: 10px;
+  flex: 1;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: white;
+  font-weight: 500;
+}
+
+.search-input:focus {
   outline: none;
   border-color: #666;
 }
@@ -64,11 +85,13 @@ body {
   border: 2px solid #000;
   border-radius: 8px;
   padding: 26px;
+  border-color: #ff003b; /* Brand primary color */
 }
 
 .chatbox h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: #ff003b; /* Brand primary color */
 }
 
 .chat-window {
@@ -77,8 +100,16 @@ body {
   line-height: 1.5;
   height: 250px;
   overflow-y: auto;
-  background: #fafafa;
+  background: #fff5f7; /* Subtle background to match body */
   margin-bottom: 20px;
+}
+
+.chat-window p {
+  margin-bottom: 12px;
+}
+
+.chat-window p strong {
+  color: #ff003b; /* Highlight user and AI labels */
 }
 
 /* placeholder message */
@@ -104,16 +135,17 @@ body {
   border: none;
   border-bottom: 2px solid #ccc;
   background: transparent;
+  border-bottom-color: #ff003b; /* Brand primary color */
 }
 
 .chat-form input:focus {
   outline: none;
-  border-bottom-color: #000;
+  border-bottom-color: #e3a535; /* Brand secondary color */
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: #ff003b; /* Brand primary color */
   color: #fff;
   border: none;
   padding: 12px;
@@ -127,12 +159,36 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #e3a535; /* Brand secondary color */
 }
 
 .chat-form button:focus {
   outline: 2px solid #000;
   outline-offset: 2px;
+}
+
+/* Generate Routine button */
+.generate-btn {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add spacing below the button */
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background: #ff003b; /* Brand primary color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.generate-btn:hover {
+  background: #e3a535; /* Brand secondary color */
+}
+
+.generate-btn i {
+  margin-right: 8px;
 }
 
 /* visually hidden */
@@ -153,7 +209,7 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #e3a535; /* Brand secondary color */
 }
 
 .site-footer nav {
@@ -162,12 +218,12 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #ff003b; /* Brand primary color */
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #e3a535; /* Brand secondary color */
 }
 
 /* products grid */
@@ -186,6 +242,14 @@ body {
   display: flex;
   gap: 15px;
   min-height: 160px;
+  border-color: #ff003b; /* Brand primary color */
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.product-card.selected {
+  border-color: #ff003b; /* Highlight selected products */
+  background-color: #fff5f7; /* Subtle background for selected products */
 }
 
 .product-card img {
@@ -206,9 +270,32 @@ body {
 .product-card h3 {
   font-size: 16px;
   margin-bottom: 8px;
+  color: #ff003b; /* Brand primary color */
 }
 
 .product-card p {
+  font-size: 14px;
+  color: #e3a535; /* Brand secondary color */
+}
+
+.product-card .toggle-description {
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background: #e3a535;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.product-card .toggle-description:hover {
+  background: #ff003b;
+}
+
+.product-card .product-description {
+  margin-top: 8px;
   font-size: 14px;
   color: #666;
 }
@@ -219,11 +306,13 @@ body {
   padding: 20px;
   border: 2px solid #000;
   border-radius: 8px;
+  border-color: #ff003b; /* Brand primary color */
 }
 
 .selected-products h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: #ff003b; /* Brand primary color */
 }
 
 #selectedProductsList {
@@ -232,24 +321,82 @@ body {
   gap: 10px;
 }
 
-.generate-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: 500;
+/* selected product */
+.selected-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.selected-product button {
+  background: #ff003b;
   color: #fff;
-  background: #000;
   border: none;
-  border-radius: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.generate-btn:hover {
-  background: #666;
+.selected-product button:hover {
+  background: #e3a535;
 }
 
-.generate-btn i {
-  margin-right: 8px;
+/* RTL toggle button */
+.rtl-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#ltrButton {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: #e3a535; /* Brand secondary color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#ltrButton:hover {
+  background: #ff003b; /* Brand primary color */
+}
+
+/* Add support for RTL languages */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+html[dir="rtl"] .search-section {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .products-grid {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .selected-products {
+  text-align: right;
+}
+
+html[dir="rtl"] .selected-product {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .chat-window {
+  text-align: right;
+}
+
+html[dir="rtl"] .chat-form {
+  flex-direction: row-reverse;
 }
