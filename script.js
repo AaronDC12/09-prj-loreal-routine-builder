@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Display a "Generating routine..." message
     chatWindow.innerHTML = `<p>Generating routine...</p>`;
 
-    // Prepare data for OpenAI API
+    // Prepare data for the Cloudflare Worker
     const messages = [
       {
         role: "system",
@@ -173,31 +173,30 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     ];
 
+    console.log("Sending messages to worker:", messages); // Log the messages array
+
     try {
+      // Send the request to the Cloudflare Worker
       const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
+        "https://loreal-routine-builder.dcunh1a.workers.dev/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${OPENAI_API_KEY}`, // Use the imported API key
           },
-          body: JSON.stringify({
-            model: "gpt-4o-search-preview", // Use the search-enabled model
-            messages: messages,
-          }),
+          body: JSON.stringify({ messages }),
         }
       );
 
       if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
+        throw new Error(`Request failed with status ${response.status}`);
       }
 
       const data = await response.json();
 
       // Check if the response contains the expected structure
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        throw new Error("Unexpected API response structure");
+        throw new Error("Unexpected response structure from the worker");
       }
 
       const routine = data.choices[0].message.content;
@@ -223,30 +222,27 @@ document.addEventListener("DOMContentLoaded", () => {
     chatHistory.push({ role: "user", content: userMessage });
 
     try {
+      // Send the chat history to the Cloudflare Worker
       const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
+        "https://loreal-routine-builder.dcunh1a.workers.dev/",
         {
-          method: "POST",
+          method: "POST", // Confirmed: POST method is used
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${OPENAI_API_KEY}`, // Use the imported API key
           },
-          body: JSON.stringify({
-            model: "gpt-4o-search-preview", // Use the search-enabled model
-            messages: chatHistory,
-          }),
+          body: JSON.stringify({ messages: chatHistory }),
         }
       );
 
       if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`);
+        throw new Error(`Request failed with status ${response.status}`);
       }
 
       const data = await response.json();
 
       // Check if the response contains the expected structure
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        throw new Error("Unexpected API response structure");
+        throw new Error("Unexpected response structure from the worker");
       }
 
       const aiResponse = data.choices[0].message.content;
